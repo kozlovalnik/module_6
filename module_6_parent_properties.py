@@ -1,9 +1,11 @@
+''' Домашнее задание на тему Использование свойств родительского класса '''
+
 class Vehicle:
+    # Возможные цвета
     __COLOR_VARIANTS = ['blue', 'red', 'green', 'black', 'white']
 
-    def __init__(self, owner, model, engine_power, color):
+    def __init__(self, owner: str, model: str, engine_power: int, color: str) -> None:
         self.owner = owner
-        self.__model = model
         self.__engine_power = engine_power
         self.__color = color
 
@@ -17,22 +19,22 @@ class Vehicle:
         return self.__color
 
     def print_info(self) -> None:
-        print(self.get_model())
-        print(self.get_horsepower())
-        print(self.get_color())
+        print(f'Модель: {self.get_model()}')
+        print(f'Мощность двигателя: {self.get_horsepower()}')
+        print(f'Цвет: {self.get_color()}')
         print(f'Владелец: {self.owner}')
 
-    def set_color(self, new_color: str):
+    def set_color(self, new_color: str) -> None:
         if new_color.lower() in self.__COLOR_VARIANTS:
             self.__color = new_color
         else:
             print(f'Нельзя сменить цвет на {new_color}')
 
 class Sedan(Vehicle):
-    pass
+    __PASSENGERS_LIMIT = 5
 
 # Текущие цвета __COLOR_VARIANTS = ['blue', 'red', 'green', 'black', 'white']
-vehicle1 = Sedan('Fedos', 'Toyota Mark II', 'blue', 500)
+vehicle1 = Sedan('Fedos', 'Toyota Mark II', 500, 'blue')
 
 # Изначальные свойства
 vehicle1.print_info()
